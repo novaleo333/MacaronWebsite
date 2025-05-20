@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Macaron Magic</title>
+    <meta name="description" content="Contact Macaron Magic for delicious French macarons in Houston. Order custom macarons, ask questions, or share feedback. We'd love to hear from you!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><a href="aboutus.html">About Us</a></td>
+                    <td><a href="menu.html">Menu</a></td>
+                    <td><a href="gallery.html">Gallery</a></td>
+                    <td colspan="7" style="text-align: center; padding-bottom: 10px;">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 70px;">
+                        </a>
+                    </td>
+                    <td><a href="contactus.html">Contact</a></td>
+                    <td><a href="location.html">Location</a></td>
+                    <td><a href="order.html">Order Now</a></td>
+                </tr>
+            </table>
+        </nav>
+    </header>
+    <main>
+        <section id="contact" class="contact" style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; padding: 40px 0;">
+            <!-- Contact Form (Left Half) -->
+            <div class="container" id="contact-container" style="flex: 1; max-width: 450px; background: #fff; padding: 24px 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <h2>Contact Us</h2>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help!"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            <!-- Socials (Right Half) -->
+            <div class="socials-container" style="flex: 1; max-width: 450px; background: #fff; padding: 24px 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center;">
+                <h2>Connect With Us</h2>
+                <div class="social-media" style="font-size: 1.3em; display: flex; flex-direction: column; gap: 18px; width: 100%;">
+                    <a href="https://youtube.com" target="_blank" class="social-link youtube" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fab fa-youtube" style="color: #FF0000;"></i> youtube.com/@macaron_magic
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link instagram" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fab fa-instagram" style="color: #C13584;"></i> instagram.com/macaron_magic
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="social-link tiktok" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fab fa-tiktok" style="color: #000;"></i> tiktok.com/@macaron_magic
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link facebook" style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fab fa-facebook" style="color: #1877F3;"></i> facebook.com/macaron_magic
+                    </a>
+                    <p>Email: <a href="mailto:info@macaronmagic.com">info@macaronmagic.com</a></p>
+                    <p>Phone: <a href="tel:1234567890">(123) 456-7890</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending...';
+            
+            // Form validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message';
+                return;
+            }
+    
+            document.getElementById('contact-container').innerHTML = `
+                <div style="padding: 24px 0;">
+                    <h2>Thank you for reaching out to Macaron Magic! 💌</h2>
+                    <p style="white-space: pre-line;">
+We truly appreciate you taking a moment to share a bit about yourself. This helps us tailor your experience and ensure every visit feels just right for you 🧁✨
+Rest assured — your information is safe with us. We use it only to personalize your experience and never share it with third parties. That’s a promise! 🔒
+👩‍🍳 One of our friendly Customer Service team members will be in touch within 24–48 hours. They'll fill you in on our latest specials — from monthly must-haves to daily deals that make indulging in our handcrafted macarons even sweeter 🍬💕
+Thanks again for connecting with us. We can’t wait to share the magic with you! 🌟
+Talk soon! 😊
+                    </p>
+                </div>
+            `;
+            
+            // Reset button after submission
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message';
+            }, 2000);
+        });
+    </script>
+    <footer>
+        <!-- Footer Section: Distribution of Contact, Quick Links, and Social Media -->
+        <div class="footer-section">
+            <table class="distribution-table">
+                <tr>
+                    <td class="footer-cell links-cell">
+                        <h3>Quick Links</h3>
+                        <ul class="ul_nobullet" style="display: flex; gap: 32px; justify-content: center; padding: 0; margin: 0;">
+                            <li style="list-style: none;"><a href="aboutus.html">About Us</a></li>
+                            <li style="list-style: none;"><a href="menu.html">Menu</a></li>
+                            <li style="list-style: none;"><a href="gallery.html">Gallery</a></li>
+                            <li style="list-style: none;"><a href="contactus.html">Contact</a></li>
+                            <li style="list-style: none;"><a href="location.html">Location</a></li>
+                            <li style="list-style: none;"><a href="order.html">Order Now</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 80px;">
+                        </a>
+                    </td>
+                    <td class="footer-cell social-cell">
+                        <h3>Follow Us</h3>
+                        <div class="social-media">
+                            <a href="https://x.com" target="_blank" class="social-link twitter"><i class="fab fa-x-twitter"></i> X</a> |
+                            <a href="https://facebook.com" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i> </a> |
+                            <a href="https://instagram.com" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i> </a> |
+                            <a href="https://youtube.com" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i> </a> |
+                            <a href="mailto:info@macaronmagic.com" class="social-link email"><i class="fas fa-envelope"></i> </a> |
+                            <a href="tel:+1234567890" class="social-link phone"><i class="fas fa-phone"></i> </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>&copy; 2025 Macaron Magic. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Macarons | Macaron Magic</title>
+    <meta name="description" content="Order delicious handcrafted French macarons from Macaron Magic in Houston. Choose from our signature flavors and custom collections.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <h1>Order Your Macarons</h1>
+        <nav>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><a href="aboutus.html">About Us</a></td>
+                    <td><a href="menu.html">Menu</a></td>
+                    <td><a href="gallery.html">Gallery</a></td>
+                    <td colspan="7" style="text-align: center; padding-bottom: 10px;">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 70px;">
+                        </a>
+                    </td>
+                    <td><a href="contactus.html">Contact</a></td>
+                    <td><a href="location.html">Location</a></td>
+                    <td><a href="order.html">Order Now</a></td>
+                </tr>
+            </table>
+        </nav>
+    </header>
+
+    <!-- Confirmation Overlay -->
+    <div class="confirmation-overlay" id="confirmationOverlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+        <div class="confirmation-box">
+            <h3 id="confirmTitle">Are you sure you want to place your order?</h3>
+            <div class="confirmation-buttons">
+                <button class="no-btn" id="noBtn">No</button>
+                <button class="yes-btn" id="yesBtn">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Overlay -->
+    <div class="thankyou-overlay" id="thankyouOverlay" style="display:none;">
+        <div class="thankyou-message">
+            🎉 Thank you for your order!<br>
+            We're so excited to start baking something magical just for you 🧁✨<br><br>
+            You'll receive a confirmation email shortly with all the sweet details. If you have any questions or need to make changes, feel free to reach out — we're here to help!<br><br>
+            In the meantime, follow us on social media for sneak peeks, new flavors, and behind-the-scenes fun 💖<br><br>
+            Thanks for choosing Macaron Magic — your taste buds are in for a treat! 🍬
+            <br>
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 70px;">
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="order-section">
+            <h2>Place Your Order</h2>
+            <form class="order-form" action="#" method="POST">
+                <!-- Customer Information -->
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Your full name" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> Phone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(optional)" autocomplete="tel">
+                </div>
+
+                <!-- Order Details -->
+                <div class="form-group">
+                    <label for="location"><i class="fas fa-store"></i> Pick-up Location:</label>
+                    <select id="location" name="location" required>
+                        <option value="">-- Select a Location --</option>
+                        <option value="midtown">Macaron Magic - Midtown (123 Sweet St, Houston, TX 77002)</option>
+                        <option value="river-oaks">Macaron Magic - River Oaks (456 Delight Ave, Houston, TX 77027)</option>
+                        <option value="heights">Macaron Magic - The Heights (789 Rainbow Rd, Houston, TX 77008)</option>
+                    </select>
+                </div>
+
+                <!-- Flavor Selection -->
+                <div class="form-group">
+                    <label for="flavor"><i class="fas fa-cookie"></i> Choose Flavors:</label>
+                    <select id="flavor" name="flavor[]" multiple required>
+                        <option value="Pistachio">Pistachio</option>
+                        <option value="Raspberry Rose">Raspberry Rose</option>
+                        <option value="Lavender Honey">Lavender Honey</option>
+                        <option value="Vanilla Bean">Vanilla Bean</option>
+                        <option value="Chocolate Ganache">Chocolate Ganache</option>
+                        <option value="Lemon Zest">Lemon Zest</option>
+                        <option value="Luxury Selections">Luxury Selections</option>
+                        <option value="Salted Caramel">Salted Caramel</option>
+                        <option value="Champagne & Berries">Champagne & Berries</option>
+                        <option value="Matcha White Chocolate">Matcha White Chocolate</option>
+                        <option value="Blueberry Cheesecake">Blueberry Cheesecake</option>
+                        <option value="Lime Meringue Pie">Lime Meringue Pie</option>
+                        <option value="Strawberry Lemonade">Strawberry Lemonade</option>
+                    </select>
+                    <small>Hold Ctrl (Windows) or Cmd (Mac) to select multiple flavors.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Quantity (dozens):</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="20" value="1" required>
+                </div>
+
+                <!-- Drinks Selection -->
+                <div class="form-group">
+                    <label for="drinks"><i class="fas fa-coffee"></i> Select Drinks:</label>
+                    <select id="drinks" name="drinks[]" multiple>
+                        <option value="Espresso">Espresso</option>
+                        <option value="Cappuccino">Cappuccino</option>
+                        <option value="Earl Grey Tea">Earl Grey Tea</option>
+                        <option value="Matcha Latte">Matcha Latte</option>
+                        <option value="Rose Lemonade">Rose Lemonade</option>
+                    </select>
+                    <small>Hold Ctrl (Windows) or Cmd (Mac) to select multiple drinks.</small>
+                </div>
+
+                <!-- Special Requests -->
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> Special Requests:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Let us know about allergies, delivery date, or other requests"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn"><i class="fas fa-shopping-cart"></i> Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section">
+            <table class="distribution-table">
+                <tr>
+                    <td class="footer-cell links-cell">
+                        <h3>Quick Links</h3>
+                        <ul class="ul_nobullet" style="display: flex; gap: 32px; justify-content: center; padding: 0; margin: 0;">
+                            <li style="list-style: none;"><a href="aboutus.html">About Us</a></li>
+                            <li style="list-style: none;"><a href="menu.html">Menu</a></li>
+                            <li style="list-style: none;"><a href="gallery.html">Gallery</a></li>
+                            <li style="list-style: none;"><a href="contactus.html">Contact</a></li>
+                            <li style="list-style: none;"><a href="location.html">Location</a></li>
+                            <li style="list-style: none;"><a href="order.html">Order Now</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 80px;">
+                        </a>
+                    </td>
+                    <td class="footer-cell social-cell">
+                        <h3>Follow Us</h3>
+                        <div class="social-media">
+                            <a href="https://x.com" target="_blank" class="social-link twitter"><i class="fab fa-x-twitter"></i> X</a> |
+                            <a href="https://facebook.com" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a> |
+                            <a href="https://instagram.com" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a> |
+                            <a href="https://youtube.com" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i></a> |
+                            <a href="mailto:info@macaronmagic.com" class="social-link email"><i class="fas fa-envelope"></i></a> |
+                            <a href="tel:+1234567890" class="social-link phone"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Macaron Magic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const orderForm = document.querySelector('.order-form');
+        const confirmationOverlay = document.getElementById('confirmationOverlay');
+        const thankyouOverlay = document.getElementById('thankyouOverlay');
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate flavor selection
+            const flavors = document.getElementById('flavor').selectedOptions;
+            if (flavors.length === 0) {
+                alert('Please select at least one flavor');
+                return;
+            }
+            
+            confirmationOverlay.style.display = 'flex';
+        });
+
+        noBtn.addEventListener('click', function() {
+            confirmationOverlay.style.display = 'none';
+        });
+
+        yesBtn.addEventListener('click', function() {
+            confirmationOverlay.style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            thankyouOverlay.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>

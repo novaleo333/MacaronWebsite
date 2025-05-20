@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Macaron Magic</title>
+    <meta name="description" content="Browse our gallery of delicious macarons at Macaron Magic. See our colorful collection of handcrafted French macarons made fresh in Houston.">
+    <meta name="keywords" content="macaron gallery, French macarons, Houston bakery, Macaron Magic photos">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preload" href="assets/images/macaron1.png" as="image">
+</head>
+<body>
+    <header>
+        <h1>Gallery</h1>
+        <nav>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><a href="aboutus.html">About Us</a></td>
+                    <td><a href="menu.html">Menu</a></td>
+                    <td><a href="gallery.html">Gallery</a></td>
+                    <td colspan="7" style="text-align: center; padding-bottom: 10px;">
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 70px;">
+                        </a>
+                    </td>
+                    <td><a href="contactus.html">Contact</a></td>
+                    <td><a href="location.html">Location</a></td>
+                    <td><a href="order.html">Order Now</a></td>
+                </tr>
+            </table>
+        </nav>
+    </header>
+    <main>
+        <div class="gallery-container">
+            <img id="gallery-img" class="gallery-image" src="assets/images/macaron1.png" alt="Colorful macarons on display">
+            <div class="gallery-caption" id="gallery-caption">Colorful macarons on display</div>
+            <div class="gallery-controls">
+                <button class="gallery-btn" id="prev-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-btn" id="next-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-section">
+            <table class="distribution-table">
+                <tr>
+                    <td class="footer-cell links-cell">
+                        <h3>Quick Links</h3>
+                        <ul class="ul_nobullet" style="display: flex; gap: 32px; justify-content: center; padding: 0; margin: 0;">
+                            <li style="list-style: none;"><a href="aboutus.html">About Us</a></li>
+                            <li style="list-style: none;"><a href="menu.html">Menu</a></li>
+                            <li style="list-style: none;"><a href="gallery.html">Gallery</a></li>
+                            <li style="list-style: none;"><a href="contactus.html">Contact</a></li>
+                            <li style="list-style: none;"><a href="location.html">Location</a></li>
+                            <li style="list-style: none;"><a href="order.html">Order Now</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="index.html">
+                            <img src="assets/images/logo.png" alt="Macaron Magic Logo" style="height: 80px;">
+                        </a>
+                    </td>
+                    <td class="footer-cell social-cell">
+                        <h3>Follow Us</h3>
+                        <div class="social-media">
+                            <a href="https://x.com" target="_blank" class="social-link twitter"><i class="fab fa-x-twitter"></i> X</a> |
+                            <a href="https://facebook.com" target="_blank" class="social-link facebook"><i class="fab fa-facebook"></i></a> |
+                            <a href="https://instagram.com" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a> |
+                            <a href="https://youtube.com" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i></a> |
+                            <a href="mailto:info@macaronmagic.com" class="social-link email"><i class="fas fa-envelope"></i></a> |
+                            <a href="tel:+1234567890" class="social-link phone"><i class="fas fa-phone"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Macaron Magic. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Gallery images and captions
+        const galleryData = [
+            {
+                src: "assets/images/macaron1.png",
+                caption: "Colorful macarons on display"
+            },
+            {
+                src: "assets/images/m2.png",
+                caption: "People enjoying macarons in our restaurant"
+            },
+            {
+                src: "assets/images/m3.png",
+                caption: "Friends sharing macarons at a cozy table"
+            },
+            {
+                src: "assets/images/m4.jpg",
+                caption: "Family celebrating with macarons"
+            },
+            {
+                src: "assets/images/m5.jpg",
+                caption: "A child tasting their first macaron"
+            },
+            {
+                src: "assets/images/m6.jpg",
+                caption: "A group laughing over macarons and coffee"
+            },
+            {
+                src: "assets/images/m7.jpg",
+                caption: "Macarons arranged for a party"
+            },
+            {
+                src: "assets/images/macaron1.png",
+                caption: "Our baker making fresh macarons"
+            },
+            {
+                src: "assets/images/macron_oven.jpg",
+                caption: "Macarons coming out of the oven"
+            }
+        ];
+
+        let currentIndex = 0;
+        const imgEl = document.getElementById('gallery-img');
+        const captionEl = document.getElementById('gallery-caption');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function showImage(index) {
+            imgEl.style.opacity = '0.5'; // Add fade effect
+            const img = new Image();
+            img.onload = function() {
+                imgEl.src = this.src;
+                imgEl.alt = galleryData[index].caption;
+                captionEl.textContent = galleryData[index].caption;
+                imgEl.style.opacity = '1';
+            }
+            img.src = galleryData[index].src;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % galleryData.length;
+            showImage(currentIndex);
+        });
+
+        // Optional: Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowLeft") prevBtn.click();
+            if (e.key === "ArrowRight") nextBtn.click();
+        });
+
+        // Initialize gallery
+        showImage(currentIndex);
+    </script>
+</body>
+</html>
